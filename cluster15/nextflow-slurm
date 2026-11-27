@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+here=$(cd "$(dirname "$0")" && pwd)
+exec "${FASTPREP_NEXTFLOW:-nextflow}" -c "$here/slurm15.config" "$@"

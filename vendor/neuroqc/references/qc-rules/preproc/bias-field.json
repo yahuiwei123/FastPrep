@@ -1,0 +1,29 @@
+{
+  "id": "PREPROC.BIAS_FIELD",
+  "scope": "structural_mri.preprocessing",
+  "category": "intensity",
+  "severity": "warning",
+  "name": "偏置场校正有效且不过度",
+  "availability": "only_if_bias_correction_is_applied_or_required",
+  "check": "比较校正前后低频强度趋势和组织内强度离散程度，确认校正减少了空间渐变，同时没有制造边缘光环或改变局部组织对比。",
+  "metric_options": [
+    "low_frequency_coefficient_of_variation",
+    "within_tissue_cv",
+    "white_matter_intensity_gradient",
+    "before_after_histogram_distance"
+  ],
+  "evidence": [
+    "before and after images",
+    "estimated bias field",
+    "low-frequency metric report",
+    "orthogonal overlay"
+  ],
+  "pass_condition": "低频不均匀性按协议改善，组织边界仍清楚，校正场平滑且没有明显过拟合。",
+  "unknown_condition": "没有校正前影像、偏置场或足够的组织/脑区采样。",
+  "fail_action": "require_review",
+  "common_failure_modes": [
+    "把真实解剖对比抹平",
+    "校正后出现亮边或暗环",
+    "只报告算法运行成功而没有检查残余不均匀"
+  ]
+}

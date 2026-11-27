@@ -1,0 +1,9 @@
+# Verified on Python 3.9.25 with an NVIDIA H100 and driver 535.183.06.
+numpy
+nibabel
+torch==2.8.0
+torch-geometric==2.2.0
+# This extension must be compiled with CUDA support. The verified build is
+# torch-scatter 2.1.2 compiled locally against CUDA 12.8 for sm_90.
+torch-scatter==2.1.2
+pytorch3d==0.7.9

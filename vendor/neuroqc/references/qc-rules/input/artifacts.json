@@ -1,0 +1,33 @@
+{
+  "id": "INPUT.ARTIFACTS",
+  "scope": "structural_mri.input",
+  "category": "artifact",
+  "severity": "error",
+  "name": "采集伪影可接受",
+  "check": "查看运动造成的重影和条纹、射频不均、信号掉落、振铃、折叠和局部饱和；把明显伪影与正常解剖变化区分开。",
+  "metric_options": [
+    "ghost_to_signal_ratio",
+    "ringing_index",
+    "dropout_fraction",
+    "saturation_fraction",
+    "background_noise_estimate"
+  ],
+  "required_views": [
+    "axial",
+    "sagittal",
+    "coronal"
+  ],
+  "evidence": [
+    "orthogonal image montage",
+    "artifact metrics when available",
+    "visual review record"
+  ],
+  "pass_condition": "没有会改变脑边界、组织分界或下游测量的明显伪影；协议定义的伪影指标处于允许范围。",
+  "unknown_condition": "只有单一切面、窗口不合适或没有记录人工伪影审查。",
+  "fail_action": "block_downstream",
+  "common_failure_modes": [
+    "运动造成重复脑缘",
+    "局部 dropout 被误当成病灶",
+    "振铃或折叠污染皮层边界"
+  ]
+}

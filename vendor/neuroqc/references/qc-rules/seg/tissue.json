@@ -1,0 +1,54 @@
+{
+  "id": "SEG.TISSUE",
+  "scope": "segmentation.tissue",
+  "category": "combined",
+  "severity": "error",
+  "name": "组织分割的标签和边界正确",
+  "check": "按标签定义检查 GM、WM、CSF 或指定解剖结构的编码、空间网格、体积、连通组件、孔洞及层间连续性。硬标签应为合法整数；概率图检查有限值、取值范围及协议要求的归一化，不要求整数或互斥。再逐类查看原图和轮廓，定位漏分与误分。",
+  "metric_options": [
+    "label_exclusivity",
+    "foreground_voxel_count",
+    "volume",
+    "connected_components",
+    "holes",
+    "out_of_bounds_fraction",
+    "slice_continuity",
+    "tissue_intensity_ordering"
+  ],
+  "required_layout": {
+    "slice_count": 20,
+    "rows": 4,
+    "columns": 5,
+    "selection": "20 个代表性横断面组成 4×5 总览；结合原图预期范围补充缺失区域和可疑层，不能只依据预测前景采样",
+    "per_tissue": true,
+    "contour_colors": [
+      "#ff3030",
+      "#ffd400"
+    ]
+  },
+  "required_fields": [
+    "false_negative_review",
+    "false_positive_review",
+    "coverage_assessment"
+  ],
+  "visual_evidence_required": true,
+  "evidence": [
+    "label header",
+    "label metrics",
+    "image-label overlay"
+  ],
+  "pass_condition": "标签或概率图满足其数据定义，必需指标符合协议；原图及补充切片未见影响用途的漏分、误分或无法解释的几何异常，两类审查均完成且 coverage_assessment=complete。",
+  "unknown_condition": "缺少标签含义、参考脑区、足够的 overlay，或没有明确记录漏分和误分审查。",
+  "fail_action": "block_downstream",
+  "common_failure_modes": [
+    "标签互相覆盖",
+    "小块伪标签远离主体",
+    "CSF/WM 泄漏到脑外或脑室外",
+    "只检查 contour 平滑而不检查漏分"
+  ],
+  "visual_checks": [
+    "先独立观察原图，再逐组织显示轮廓",
+    "按原图预期解剖范围检查，补看预测标签完全缺失的位置",
+    "记录漏分、误分及异常连通块的位置；解剖上正常的多组件和孔洞不自动失败"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "PREPROC.SMOOTHING",
+  "scope": "structural_mri.preprocessing",
+  "category": "intensity",
+  "severity": "warning",
+  "availability": "only_if_smoothing_is_applied_or_required",
+  "name": "平滑核与分析目的匹配",
+  "check": "核对实际平滑核、FWHM、各向同性假设和应用顺序；确认平滑没有在配准前后被重复执行，也没有跨越脑外区域。",
+  "metric_options": [
+    "declared_fwhm_mm",
+    "estimated_fwhm_mm",
+    "anisotropy",
+    "edge_strength_before_after",
+    "duplicate_smoothing_flags"
+  ],
+  "evidence": [
+    "processing parameters",
+    "estimated smoothness",
+    "before and after images",
+    "mask-aware smoothing report"
+  ],
+  "pass_condition": "实际平滑程度与协议接近，顺序正确，并保留了任务所需的解剖边缘。",
+  "unknown_condition": "只知道软件命令但没有实际输出或平滑参数，无法确认实际 FWHM。",
+  "fail_action": "require_review",
+  "common_failure_modes": [
+    "把结构像过度平滑后再做皮层重建",
+    "mask 外零值参与卷积形成边缘",
+    "声明 6 mm 但实际重复平滑"
+  ]
+}

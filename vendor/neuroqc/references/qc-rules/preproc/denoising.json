@@ -1,0 +1,29 @@
+{
+  "id": "PREPROC.DENOISING",
+  "scope": "structural_mri.preprocessing",
+  "category": "intensity",
+  "severity": "warning",
+  "availability": "only_if_denoising_is_applied_or_required",
+  "name": "去噪保留了解剖边缘",
+  "check": "比较去噪前后背景噪声、组织内信噪比和高对比度边缘，确认噪声下降没有伴随皮层、脑室或小结构的过度平滑。",
+  "metric_options": [
+    "snr",
+    "cnr",
+    "noise_sd",
+    "edge_strength",
+    "sharpness_index"
+  ],
+  "evidence": [
+    "before and after images",
+    "noise and edge metrics",
+    "difference image"
+  ],
+  "pass_condition": "噪声按协议下降，关键边缘和细小结构没有系统性变钝或产生新纹理。",
+  "unknown_condition": "没有去噪前对照或没有定义目标结构和允许的平滑程度。",
+  "fail_action": "require_review",
+  "common_failure_modes": [
+    "把皮层厚度边界滤掉",
+    "残留块状纹理",
+    "将去噪结果与原图空间或强度标度混用"
+  ]
+}

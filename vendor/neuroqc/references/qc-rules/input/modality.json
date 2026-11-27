@@ -1,0 +1,31 @@
+{
+  "id": "INPUT.MODALITY",
+  "scope": "structural_mri.input",
+  "category": "visual",
+  "severity": "error",
+  "name": "影像质量与声明模态一致",
+  "check": "独立查看原始影像的横断、矢状和冠状三视图，检查组织边界、对比和整体影像质量是否支持当前用途，并将灰白质、脑脊液等结构的信号表现与实际声明的模态核对。记录声明来源和观察依据，不凭文件名或显示标题自动认定模态。伪影、覆盖和强度需要专项分析时，再选择对应 INPUT 规则，不把输入输出语义清单作为独立必需步骤。",
+  "visual_evidence_required": true,
+  "required_views": ["axial", "sagittal", "coronal"],
+  "visual_checks": [
+    "三视图均显示原图，选择能观察灰白质、脑室和整体脑形态的代表层；可疑区域补看",
+    "观察清晰度、组织对比、运动重影、信号掉落及其他影响当前用途的质量问题",
+    "结合序列背景核对声明模态与组织信号关系；必要时参考采集元数据，病理或处理可改变典型表现",
+    "分别记录质量和模态一致性结论，并在 observation 中说明依据；无法从图像确认增强状态或序列类型时保留 indeterminate"
+  ],
+  "required_fields": ["declared_modality", "modality_assessment", "image_quality_assessment"],
+  "evidence": [
+    "declared modality and its source",
+    "source-image axial/sagittal/coronal montage",
+    "image-quality and modality review record"
+  ],
+  "pass_condition": "三视图和必要补充切片已审查，影像质量支持当前用途（image_quality_assessment=acceptable），且观察和可用采集证据与声明模态一致（modality_assessment=consistent）；声明来源与判断依据均可追溯。",
+  "unknown_condition": "缺少声明模态或来源、三视图、合适窗口或审查记录，或现有证据无法区分声明模态且未证实失败。已证实影像质量不可接受或模态不一致时优先 fail。",
+  "fail_action": "block_downstream",
+  "common_failure_modes": [
+    "T1w/T2w/FLAIR 等模态声明与实际组织对比不一致",
+    "明显运动或信号掉落使组织对比不可判读或不适合当前用途",
+    "仅凭文件名或出图成功就认定模态正确",
+    "没有足够证据却把增强前后状态当成已经确认"
+  ]
+}

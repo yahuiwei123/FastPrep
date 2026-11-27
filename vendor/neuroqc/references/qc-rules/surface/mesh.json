@@ -1,0 +1,43 @@
+{
+  "id": "SURFACE.MESH",
+  "stage_protocol_file": "surface-stage-protocol-v1.md",
+  "scope": "cortical_reconstruction",
+  "category": "combined",
+  "severity": "error",
+  "name": "表面网格可读且拓扑有效",
+  "check": "先用三角网格从多个视角查看表面是否连续、平滑、无孔洞和异常鼓包，再检查文件可读性、顶点和三角面索引、退化面、重复面、非流形边、自交、边界边、孤立顶点和目标拓扑。",
+  "metric_options": [
+    "vertex_count",
+    "face_count",
+    "degenerate_faces",
+    "duplicate_faces",
+    "non_manifold_edges",
+    "self_intersections",
+    "isolated_vertices",
+    "euler_characteristic",
+    "holes"
+  ],
+  "renderer": "surfplot",
+  "required_views": [
+    "lateral",
+    "medial",
+    "anterior",
+    "posterior",
+    "dorsal",
+    "ventral"
+  ],
+  "visual_evidence_required": true,
+  "evidence": [
+    "surface parser report",
+    "mesh topology report",
+    "surface multi-view"
+  ],
+  "pass_condition": "六个视角中的三角表面连续平滑，没有明显缺失、孔洞、桥接、鼓包或大范围凹陷；网格可读、索引有效，拓扑缺陷为零或在协议允许范围内。",
+  "unknown_condition": "没有六个方向的可追溯渲染，读取器不支持输入格式，或没有执行自交/拓扑检查。",
+  "fail_action": "block_downstream",
+  "common_failure_modes": [
+    "非流形边",
+    "大量退化三角面",
+    "表面有洞但只凭渲染截图通过"
+  ]
+}

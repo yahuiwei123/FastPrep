@@ -1,0 +1,38 @@
+{
+  "id": "REG.AFFINE",
+  "scope": "registration.affine",
+  "category": "combined",
+  "severity": "error",
+  "name": "仿射变换没有非预期形变",
+  "check": "先在轴向、矢状和冠状三视图中检查脑缘、脑室和关键 ROI 的叠加，再检查尺度、剪切、行列式和左右方向；确认仿射变换符合采集和协议允许的范围。",
+  "metric_options": [
+    "affine_determinant",
+    "axis_scale",
+    "shear_norm",
+    "orientation_preservation"
+  ],
+  "required_views": [
+    "axial",
+    "sagittal",
+    "coronal"
+  ],
+  "visual_evidence_required": true,
+  "visual_checks": [
+    "整体边界对齐",
+    "没有局部拉伸或压缩伪影",
+    "无左右翻转"
+  ],
+  "evidence": [
+    "affine matrix",
+    "decomposed transform metrics",
+    "registration overlay"
+  ],
+  "pass_condition": "三个正交视图中脑缘、脑室和关键 ROI 达到协议要求的对应，无未解释的错位或镜像；在统一坐标约定下分解的尺度、剪切和行列式符合协议。",
+  "unknown_condition": "缺少三视图、变换坐标约定或必需参数的解释范围，且没有已证实的失败。",
+  "fail_action": "block_downstream",
+  "common_failure_modes": [
+    "混淆 RAS/LPS 或体素与世界坐标",
+    "将单位变化误当成解剖尺度变化",
+    "数值参数正常但脑室和关键 ROI 仍错位"
+  ]
+}

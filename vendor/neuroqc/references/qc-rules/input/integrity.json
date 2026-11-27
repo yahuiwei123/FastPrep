@@ -1,0 +1,30 @@
+{
+  "id": "INPUT.INTEGRITY",
+  "scope": "structural_mri.input",
+  "category": "geometry",
+  "severity": "error",
+  "name": "结构像文件完整可读",
+  "check": "确认结构像是预期的三维 NIfTI（或协议允许的等价格式），数据为有限值，非空，维度和体素尺寸与任务相符，qform/sform 能解释当前空间。",
+  "metric_options": [
+    "ndim",
+    "shape",
+    "voxel_size_mm",
+    "finite_voxel_fraction",
+    "nonzero_voxel_fraction",
+    "qform_code",
+    "sform_code"
+  ],
+  "evidence": [
+    "image header",
+    "header summary",
+    "voxel statistics"
+  ],
+  "pass_condition": "文件可读、数据有限且非空；维度、体素尺寸和空间编码符合调用方协议，没有未解释的 header 冲突。",
+  "unknown_condition": "协议没有定义允许的维度或体素范围，且没有参考队列可用于解释异常。",
+  "fail_action": "block_downstream",
+  "common_failure_modes": [
+    "全零或截断文件",
+    "qform 与 sform 指向不同空间",
+    "把四维序列的单个时间点误当成 T1w"
+  ]
+}

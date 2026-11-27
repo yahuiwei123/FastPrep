@@ -1,0 +1,55 @@
+{
+  "id": "SEG.BRAINMASK",
+  "scope": "segmentation.brainmask",
+  "category": "combined",
+  "severity": "error",
+  "name": "脑掩膜覆盖完整且不泄漏",
+  "check": "先在实际用于轮廓和输出的三维二值掩膜上计算连通域，记录输入来源、前景定义、连通性、组件数和大小；脑掩膜默认采用26连通性，其他选择必须由协议明确固定，不能为迎合截图切换。孤岛是否存在是算法事实，二维分开的轮廓不能证明三维分离。随后独立查看原始影像并叠加红色横断轮廓，检查颞极、额底、颅顶、枕叶、脑干和小脑是否漏分，头皮、颅骨、眼眶是否误入；按脑掩膜定义解释脑脊液及脑干下界。一个组件只能排除所声明前景/连通性下的分离组件，不能排除与脑相连的泄漏；多个组件或小体积也不能单独证明非脑组织。无通用体积阈值要求。",
+  "component_measurement": {
+    "evidence_metric": "brainmask_components",
+    "source": "与叠加轮廓及输出支持域一致的三维二值掩膜，不把带强度的 skull-stripped 图直接当作二值掩膜",
+    "default_connectivity": 26,
+    "allowed_connectivity": [6, 18, 26],
+    "required_evidence": ["input_source", "foreground_definition", "connectivity", "component_count", "component_sizes_voxels", "detached_foreground_voxels"],
+    "measurement_tool": "python -m neuroqc metrics segmentation --image SOURCE --labels BINARY_MASK --label 1 --connectivity 26 --output REPORT",
+    "report_mapping": "将该命令的完整JSON放入qc_evidence.metrics.brainmask_components，保留输入路径及metrics.labels['1']中的componentConnectivity、connectedComponents、componentSizesVoxels、foregroundVoxelCount和detachedForegroundVoxelCount；不得手填或凭截图生成数值。",
+    "interpretation": "component_count=1且detached_foreground_voxels=0否定该掩膜中存在分离孤岛；组件的组织身份和与脑相连的泄漏仍需原图审查。不得把component_count==1设置为通用通过门槛。"
+  },
+  "required_views": [
+    "axial"
+  ],
+  "visual_evidence_required": true,
+  "visual_checks": [
+    "沿全脑范围检查原图及轮廓，不只抽取预测掩膜存在的层",
+    "分别记录漏分和误分的位置、范围；可疑位置补充切片",
+    "检查 mask 定义允许的脑脊液与脑干范围",
+    "用原图判断算法检出的分离组件属于合法脑组织还是脑外组织；不从二维轮廓估计三维连通性，不推翻有效连通域报告"
+  ],
+  "evidence": [
+    "axial red-contour brain-mask overlay",
+    "visual review record",
+    "3D mask connected-component report with explicit foreground and connectivity"
+  ],
+  "pass_condition": "连通域报告与实际掩膜和前景定义对应；原图横断面上的红色轮廓未见影响用途的漏脑或脑外泄漏，漏分和误分审查均完成且 coverage_assessment=complete。组件数不构成独立通过条件。",
+  "unknown_condition": "缺少对应掩膜的三维连通域报告、掩膜定义、覆盖全脑范围的横断面叠加或漏分/误分记录，且现有证据不足以确认失败。测量与截图描述冲突时不确认孤岛或自动删域；核对前景、输入来源、连通性及原图，记录仍未解决的组织身份。",
+  "fail_action": "block_downstream",
+  "common_failure_modes": [
+    "颞极或小脑被切掉",
+    "眼眶/头皮进入 mask",
+    "颅骨残留被当作脑组织"
+  ],
+  "required_fields": [
+    "false_negative_review",
+    "false_positive_review",
+    "coverage_assessment"
+  ],
+  "required_layout": {
+    "slice_count": 20,
+    "rows": 4,
+    "columns": 5,
+    "selection": "覆盖原图全脑范围的代表性横断面；可疑或预测完全缺失的区域补充横断面",
+    "contour_colors": [
+      "#ff3030"
+    ]
+  }
+}

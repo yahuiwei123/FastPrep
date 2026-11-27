@@ -1,0 +1,7 @@
+numpy==1.26.4
+scipy==1.13.1
+nibabel==5.3.3
+torch==2.8.0
+torch-geometric==2.2.0
+torch-scatter==2.1.2
+pytorch3d==0.7.9

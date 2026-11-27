@@ -1,0 +1,44 @@
+{
+  "id": "REG.NONLINEAR",
+  "scope": "registration.nonlinear",
+  "category": "combined",
+  "severity": "error",
+  "name": "非线性形变场保持可逆和连续",
+  "check": "在三个正交切面叠加参考影像和变换后的移动影像，检查脑缘、脑室与关键 ROI；检查位移方向、Jacobian、折叠及协议要求的逆一致性和平滑度，并用变形网格/Jacobian 热图定位可疑区域。",
+  "metric_options": [
+    "negative_jacobian_voxels",
+    "jacobian_percentiles",
+    "inverse_consistency_error",
+    "displacement_smoothness",
+    "roi_dice"
+  ],
+  "required_views": [
+    "axial",
+    "sagittal",
+    "coronal"
+  ],
+  "additional_views": [
+    "deformation_grid",
+    "jacobian_heatmap"
+  ],
+  "visual_evidence_required": true,
+  "visual_checks": [
+    "无网格交叉",
+    "无明显局部拉伸或塌陷",
+    "脑缘、脑室和关键 ROI 保持对应"
+  ],
+  "evidence": [
+    "deformation field metadata",
+    "Jacobian report",
+    "inverse-consistency report",
+    "overlay and deformation grid"
+  ],
+  "pass_condition": "三视图中的脑缘、脑室和关键 ROI 达到协议要求的对应，未见错误拉伸或塌陷；折叠、Jacobian、逆一致性等协议要求的指标合格。",
+  "unknown_condition": "缺少三视图、形变场及协议要求的定量证据，且没有已证实的失败；变形网格或 Jacobian 热图不能替代解剖叠加。",
+  "fail_action": "block_downstream",
+  "common_failure_modes": [
+    "局部折叠岛",
+    "脑室被拉入脑实质",
+    "只看 warped image 而没有检查变形场"
+  ]
+}

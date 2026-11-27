@@ -1,0 +1,32 @@
+{
+  "id": "INPUT.COVERAGE",
+  "scope": "structural_mri.input",
+  "category": "coverage",
+  "severity": "error",
+  "name": "全脑覆盖和视野足够",
+  "check": "检查颅顶、枕下窝和左右脑缘是否完整，是否有切片截断、过窄视野、wrap-around 或明显外部区域占据有效视野。",
+  "metric_options": [
+    "brain_mask_edge_distance",
+    "occupied_slice_range",
+    "field_of_view_mm",
+    "truncation_flags"
+  ],
+  "required_views": [
+    "axial",
+    "sagittal",
+    "coronal"
+  ],
+  "evidence": [
+    "whole-brain montage",
+    "brain mask or foreground mask",
+    "image header"
+  ],
+  "pass_condition": "协议要求覆盖的脑区均在视野内，脑缘没有被截断；任何裁剪都已在输入语义中明确说明。",
+  "unknown_condition": "没有可复核的三视图或无法区分有意裁剪与采集截断。",
+  "fail_action": "block_downstream",
+  "common_failure_modes": [
+    "顶部或小脑缺失",
+    "颞叶被 FOV 截断",
+    "wrap-around 结构叠到脑内"
+  ]
+}

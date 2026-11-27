@@ -1,0 +1,59 @@
+{
+  "id": "SEG.TUMOR",
+  "scope": "segmentation.tumor",
+  "category": "combined",
+  "severity": "error",
+  "availability": "when_tumor_segmentation_is_requested",
+  "name": "肿瘤分割符合目标标签定义",
+  "check": "先确认标签定义及所需模态，例如增强区、肿瘤核心、全肿瘤和水肿是否分开。核对标签编码、网格及标签间的互斥或包含关系，再在配准一致的协议指定模态上逐类查看原图和轮廓，检查病灶主体、边缘及其他可疑灶。",
+  "metric_options": [
+    "label_values",
+    "grid_consistency",
+    "lesion_volume",
+    "connected_components",
+    "label_relationships",
+    "slice_continuity"
+  ],
+  "required_views": [
+    "axial",
+    "sagittal",
+    "coronal"
+  ],
+  "required_layout": {
+    "slice_count": 20,
+    "rows": 4,
+    "columns": 5,
+    "selection": "20 个代表性横断面总览，另附矢状和冠状视图；依据原图补看全部可疑灶，不能只按预测前景选层",
+    "per_label": true,
+    "contour_colors": [
+      "#ff3030",
+      "#ffd400"
+    ]
+  },
+  "required_fields": [
+    "false_negative_review",
+    "false_positive_review",
+    "coverage_assessment"
+  ],
+  "visual_evidence_required": true,
+  "evidence": [
+    "tumor or lesion overlay",
+    "representative slice montage",
+    "visual review record"
+  ],
+  "pass_condition": "标签编码、空间和类别关系正确，必需指标符合协议；所需模态上的轮廓符合标签定义，没有明确的重要漏分或误分，两类审查均完成且 coverage_assessment=complete。",
+  "unknown_condition": "缺少标签定义、所需模态、可疑灶全范围的视觉证据或漏分/误分记录；无依据确认空标签是否合理。",
+  "fail_action": "block_downstream",
+  "common_failure_modes": [
+    "小病灶或某个病灶整体漏分",
+    "增强区与水肿标签混淆",
+    "模态间错位导致轮廓偏移",
+    "将血管或术后改变误标为目标组织"
+  ],
+  "visual_checks": [
+    "逐类记录漏分与误分，检查多灶及小病灶",
+    "增强区结合协议所需增强前后 T1w，水肿相关标签结合 T2w/FLAIR；确认模态间空间一致",
+    "按标签定义解释水肿、坏死区、血管及术后腔，不将其一律当作误分",
+    "多灶可形成多个连通块；某亚区可合法为空，不能仅凭空标签或多组件判失败"
+  ]
+}

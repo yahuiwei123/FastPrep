@@ -1,0 +1,6 @@
+#!/bin/sh
+set -eu
+prefix="${FASTPREP_CUDA_HOST_PREFIX:?set to a Conda GCC 12 x86_64 compiler prefix}"
+triplet=x86_64-conda-linux-gnu
+root="$prefix/$triplet/sysroot"
+exec "$prefix/bin/$triplet-g++" --sysroot="$root" -B"$prefix/$triplet/bin/" -B"$root/usr/lib64/" -L"$root/usr/lib64" -L"$root/lib64" "$@"

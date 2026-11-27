@@ -1,0 +1,13 @@
+{
+  "freesurfer_home": "${FREESURFER_HOME}",
+  "fsl_dir": "${FSLDIR}",
+  "python": {
+    "helper": "envs/helper/bin/python",
+    "bfc": "envs/bfc/bin/python",
+    "synthseg": "envs/synthseg/bin/python",
+    "sugar": "envs/sugar/bin/python",
+    "hdbet": "envs/hdbet/bin/python",
+    "qc": "envs/qc/bin/python",
+    "geometry": "envs/geometry/bin/python"
+  }
+}

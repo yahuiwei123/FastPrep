@@ -1,0 +1,67 @@
+{
+  "version": "5.1",
+  "language": "zh-CN",
+  "description": "QC 规则索引与通用判定约定。每条规则单独存储；按 SKILL.md 的大类表选择所需文件，不要默认加载全部规则。",
+  "status_values": [
+    "pass",
+    "fail",
+    "unknown"
+  ],
+  "severity_definitions": {
+    "error": "失败会使依赖该结果的下游分析不可靠，应阻断或退回处理。",
+    "warning": "失败不一定使结果不可用，但必须记录风险并安排人工复核。",
+    "info": "用于补充记录；缺失或 unknown 不单独阻断总体 QC。"
+  },
+  "decision_policy": {
+    "missing_required_evidence": "unknown",
+    "missing_optional_evidence": "unknown",
+    "unknown_threshold": "不得自行填入固定阈值；记录需要由调用方协议或参考队列提供的范围。",
+    "threshold_source": [
+      "caller_protocol",
+      "reference_cohort",
+      "validated_method_documentation"
+    ],
+    "visual_and_metric_evidence": "需要数值证据的规则不能只凭截图通过；需要视觉证据的规则也不能只凭单一指标通过。",
+    "rule_selection": "按实际操作和分割对象选择规则；同一操作的数值与视觉证据写入同一条 checks 记录，不另建视觉或 FP/FN 规则。",
+    "combined_result": "已证实任一必需检查失败则 fail；否则缺少必需数值或视觉证据则 unknown；全部必需检查通过才是 pass。metric_options 是候选指标，实际必需项由协议指定。",
+    "segmentation_review": "所有分割规则的视觉证据均记录 false_negative_review、false_positive_review 和 coverage_assessment；无参考标注时这些是视觉判断，不是可计算的 FP/FN 计数。",
+    "component_evidence": "三维孤岛/分离组件是否存在由同一前景掩膜、固定连通性和输入 SHA 对应的算法报告判断，不从二维轮廓推断。组件数和大小不决定组织身份或完整分割 QC；测量否定孤岛时保留其他漏分、粘连泄漏及证据不足的独立判断。新规则仅在新候选中冻结，不修改历史 QC 或原冻结策略。"
+  },
+  "id_convention": {
+    "format": "DOMAIN.CHECK",
+    "separator": ".",
+    "case": "UPPER_SNAKE_CASE",
+    "domains": {
+      "INPUT": "输入影像和空间语义",
+      "PREPROC": "通用预处理步骤",
+      "REG": "配准",
+      "SEG": "分割",
+      "SURFACE": "皮层表面和重建",
+      "OUTPUT": "输出文件和空间一致性",
+      "REPORT": "报告和证据"
+    }
+  },
+  "rule_files": {
+    "INPUT.MODALITY": "qc-rules/input/modality.json",
+    "INPUT.INTEGRITY": "qc-rules/input/integrity.json",
+    "INPUT.ORIENTATION": "qc-rules/input/orientation.json",
+    "INPUT.COVERAGE": "qc-rules/input/coverage.json",
+    "INPUT.ARTIFACTS": "qc-rules/input/artifacts.json",
+    "INPUT.INTENSITY": "qc-rules/input/intensity.json",
+    "PREPROC.BIAS_FIELD": "qc-rules/preproc/bias-field.json",
+    "PREPROC.DENOISING": "qc-rules/preproc/denoising.json",
+    "SEG.BRAINMASK": "qc-rules/seg/brainmask.json",
+    "PREPROC.RESAMPLING": "qc-rules/preproc/resampling.json",
+    "PREPROC.SMOOTHING": "qc-rules/preproc/smoothing.json",
+    "SEG.TISSUE": "qc-rules/seg/tissue.json",
+    "SEG.TUMOR": "qc-rules/seg/tumor.json",
+    "OUTPUT.CONSISTENCY": "qc-rules/output/consistency.json",
+    "REG.RIGID": "qc-rules/reg/rigid.json",
+    "REG.AFFINE": "qc-rules/reg/affine.json",
+    "REG.NONLINEAR": "qc-rules/reg/nonlinear.json",
+    "SEG.REFERENCE": "qc-rules/seg/reference.json",
+    "SURFACE.MESH": "qc-rules/surface/mesh.json",
+    "SURFACE.WHITE_PIAL": "qc-rules/surface/white-pial.json",
+    "REPORT.TRACEABILITY": "qc-rules/report/traceability.json"
+  }
+}

@@ -1,0 +1,13 @@
+name: fastprep-qc
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy=1.26.4
+  - scipy=1.15.3
+  - nibabel=5.2.1
+  - matplotlib=3.10.0
+  - vtk=9.6.2
+  - pip
+  - pip:
+      - surfplot==0.2.0

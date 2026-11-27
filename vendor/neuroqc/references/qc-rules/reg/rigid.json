@@ -1,0 +1,38 @@
+{
+  "id": "REG.RIGID",
+  "scope": "registration.rigid",
+  "category": "combined",
+  "severity": "error",
+  "name": "刚性配准改善了对应关系",
+  "check": "用边缘、棋盘格或半透明叠加在轴向、矢状和冠状三视图中检查脑缘、脑室和关键 ROI，同时比较配准前后相似度；不要把单一全局指标当成充分证据。",
+  "metric_options": [
+    "mutual_information",
+    "normalized_cross_correlation",
+    "landmark_rmse",
+    "roi_dice"
+  ],
+  "required_views": [
+    "axial",
+    "sagittal",
+    "coronal"
+  ],
+  "visual_evidence_required": true,
+  "visual_checks": [
+    "脑缘和脑室无双重轮廓",
+    "关键 ROI 对齐",
+    "无左右翻转或整体偏移"
+  ],
+  "evidence": [
+    "before and after metrics",
+    "transform metadata",
+    "registration overlay"
+  ],
+  "pass_condition": "达到调用方协议阈值或参考范围，且与三视图视觉证据一致。",
+  "unknown_condition": "缺少协议要求的指标或阈值，或缺少三视图叠加；只有在协议要求计算改善量时，缺失配准前基线才阻止该项判断。",
+  "fail_action": "block_downstream",
+  "common_failure_modes": [
+    "相似度提高但整体仍平移",
+    "强度分布差异使 MI 失真",
+    "只检查中心 ROI"
+  ]
+}

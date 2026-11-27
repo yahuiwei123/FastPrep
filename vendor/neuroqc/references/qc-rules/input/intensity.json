@@ -1,0 +1,28 @@
+{
+  "id": "INPUT.INTENSITY",
+  "scope": "structural_mri.input",
+  "category": "intensity",
+  "severity": "warning",
+  "name": "强度范围和饱和情况合理",
+  "check": "检查非零强度分布、极端值、整数截断和饱和体素，确认转换或重采样没有把有效对比压成少数灰度级。",
+  "metric_options": [
+    "percentiles",
+    "unique_intensity_count",
+    "clipped_low_fraction",
+    "clipped_high_fraction",
+    "background_to_foreground_ratio"
+  ],
+  "evidence": [
+    "voxel histogram",
+    "header datatype and scaling",
+    "representative image slices"
+  ],
+  "pass_condition": "强度分布能支持目标组织区分，没有未解释的大面积饱和、截断或全局平坦化；阈值来自协议或参考队列。",
+  "unknown_condition": "没有原始强度或转换前后对照，无法判断异常是采集特性还是转换损失。",
+  "fail_action": "require_review",
+  "common_failure_modes": [
+    "DICOM 转换后 slope/intercept 丢失",
+    "强度被截断到数据类型上下限",
+    "重采样后大量体素变成同一值"
+  ]
+}

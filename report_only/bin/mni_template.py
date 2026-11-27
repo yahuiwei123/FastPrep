@@ -1,0 +1,1 @@
+../../bin/mni_template.py

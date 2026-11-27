@@ -1,0 +1,152 @@
+{
+  "commands": {
+    "freesurfer:mri_convert": {
+      "executable": "mri_convert",
+      "files": []
+    },
+    "freesurfer:recon-all": {
+      "executable": "recon-all",
+      "files": [
+        "bin/*"
+      ]
+    },
+    "freesurfer:talairach_avi": {
+      "executable": "talairach_avi",
+      "files": [
+        "bin/mpr2mni305",
+        "average/mni305.cor.mgz"
+      ]
+    },
+    "freesurfer:lta_convert": {
+      "executable": "lta_convert",
+      "files": []
+    },
+    "freesurfer:mri_add_xform_to_header": {
+      "executable": "mri_add_xform_to_header",
+      "files": []
+    },
+    "freesurfer:mri_mask": {
+      "executable": "mri_mask",
+      "files": []
+    },
+    "freesurfer:mri_cc": {
+      "executable": "mri_cc",
+      "files": []
+    },
+    "freesurfer:mris_fix_topology": {
+      "executable": "mris_fix_topology",
+      "files": []
+    },
+    "freesurfer:mris_remove_intersection": {
+      "executable": "mris_remove_intersection",
+      "files": []
+    },
+    "freesurfer:mris_euler_number": {
+      "executable": "mris_euler_number",
+      "files": []
+    },
+    "freesurfer:mris_info": {
+      "executable": "mris_info",
+      "files": []
+    },
+    "freesurfer:mris_autodet_gwstats": {
+      "executable": "mris_autodet_gwstats",
+      "files": []
+    },
+    "freesurfer:mris_place_surface": {
+      "executable": "mris_place_surface",
+      "files": []
+    },
+    "freesurfer:mri_label2label-cortex": {
+      "executable": "mri_label2label",
+      "files": []
+    },
+    "freesurfer:mri_relabel_hypointensities": {
+      "executable": "mri_relabel_hypointensities",
+      "files": []
+    },
+    "freesurfer:mris_smooth": {
+      "executable": "mris_smooth",
+      "files": []
+    },
+    "freesurfer:mris_inflate": {
+      "executable": "mris_inflate",
+      "files": []
+    },
+    "freesurfer:mris_curvature_stats": {
+      "executable": "mris_curvature_stats",
+      "files": []
+    },
+    "freesurfer:mris_sphere": {
+      "executable": "mris_sphere",
+      "files": []
+    },
+    "freesurfer:mris_jacobian": {
+      "executable": "mris_jacobian",
+      "files": []
+    },
+    "freesurfer:mris_ca_label": {
+      "executable": "mris_ca_label",
+      "files": [
+        "average/lh.curvature.buckner40.filled.desikan_killiany.2010-03-25.gcs",
+        "average/rh.curvature.buckner40.filled.desikan_killiany.2010-03-25.gcs"
+      ]
+    },
+    "freesurfer:mris_volmask": {
+      "executable": "mris_volmask",
+      "files": []
+    },
+    "freesurfer:pctsurfcon": {
+      "executable": "pctsurfcon",
+      "files": []
+    },
+    "freesurfer:mris_anatomical_stats": {
+      "executable": "mris_anatomical_stats",
+      "files": []
+    },
+    "freesurfer:mri_surf2volseg-fix": {
+      "executable": "mri_surf2volseg",
+      "files": []
+    },
+    "freesurfer:mri_brainvol_stats": {
+      "executable": "mri_brainvol_stats",
+      "files": []
+    },
+    "freesurfer:mri_surf2volseg-label": {
+      "executable": "mri_surf2volseg",
+      "files": []
+    },
+    "freesurfer:mri_surf2surf": {
+      "executable": "mri_surf2surf",
+      "files": []
+    },
+    "freesurfer:mri_em_register": {
+      "executable": "mri_em_register",
+      "files": []
+    },
+    "freesurfer:mri_binarize": {
+      "executable": "mri_binarize",
+      "files": []
+    },
+    "freesurfer:mri_edit_wm_with_aseg": {
+      "executable": "mri_edit_wm_with_aseg",
+      "files": []
+    },
+    "freesurfer:mri_pretess": {
+      "executable": "mri_pretess",
+      "files": []
+    },
+    "freesurfer:mri_fill": {
+      "executable": "mri_fill",
+      "files": []
+    },
+    "freesurfer:mri_tessellate": {
+      "executable": "mri_tessellate",
+      "files": []
+    },
+    "freesurfer:mris_convert": {
+      "executable": "mris_convert",
+      "files": []
+    }
+  }
+}

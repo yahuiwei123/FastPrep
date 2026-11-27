@@ -1,0 +1,23 @@
+{
+  "id": "REPORT.TRACEABILITY",
+  "scope": "report",
+  "category": "provenance",
+  "severity": "error",
+  "name": "每个结论都能复核",
+  "check": "为每项 pass、fail 或 unknown 保留输入文件、实际计算值、单位、比较方向、阈值来源、命令/参数、软件版本和图像证据。",
+  "evidence": [
+    "QC report",
+    "input manifest",
+    "command log",
+    "metric files",
+    "visual evidence paths"
+  ],
+  "pass_condition": "证据路径和生成上下文可复核；未执行的项目明确标记 unknown，并写明缺失原因。",
+  "unknown_condition": "结论存在但不能定位到输入、计算过程或图像证据。",
+  "fail_action": "reject_qc",
+  "common_failure_modes": [
+    "只保存最终分数",
+    "截图没有输入和参数",
+    "把未运行写成 pass"
+  ]
+}

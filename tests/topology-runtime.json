@@ -1,0 +1,4 @@
+{
+  "schema": "fastprep.topology/1",
+  "topology_subjects": ["sub-01", "sub-02_ses-01"]
+}

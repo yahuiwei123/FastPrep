@@ -1,0 +1,33 @@
+{
+  "id": "OUTPUT.CONSISTENCY",
+  "scope": "structural_mri.output",
+  "category": "contract",
+  "severity": "error",
+  "name": "预处理输出可复现且自洽",
+  "check": "按冻结的文件用途和几何关系确认输出自洽。需要逐体素联合使用的影像与 mask/labels 必须具有相同 shape 和物理 affine；有意保留采集网格、conform 或注册输出则分别记录源/目标头信息、坐标系、实际转换及映射依据，不要求所有输出网格相同。所有文件须可由同一处理记录重建，且没有 NaN、无意覆盖或丢失。",
+  "stage_protocol_file": "volume-grid-relations-v1.md",
+  "metric_options": [
+    "file_exists",
+    "finite_voxel_fraction",
+    "grid_consistency",
+    "transform_chain_completeness",
+    "stage_manifest_member"
+  ],
+  "evidence": [
+    "output manifest",
+    "headers",
+    "transform chain",
+    "command log",
+    "stage manifest member paths and file sizes"
+  ],
+  "pass_condition": "声明的输出全部存在且可读，逐体素配套文件网格一致；有意不同网格的文件满足处理前声明的源/目标几何关系，且完整头信息、实际转换/映射依据、原生处理记录和影像审查支持该关系。处理参数与版本可追溯。未声明的网格差异不能通过。",
+  "unknown_condition": "缺少文件用途、几何关系、完整头信息、版本或所需变换依据，无法确认结果是否来自同一运行或关系是否正确；不得用同一 space 名称或可逆 affine 单独证明对应。",
+  "fail_action": "reject_qc",
+  "common_failure_modes": [
+    "mask 与影像来自不同受试者或运行",
+    "覆盖旧输出但未更新日志",
+    "逐体素配套文件可读但 affine 不一致",
+    "把有意保留的采集网格与 conform 网格误判为必须相同，或为满足检查而重采样原生输出",
+    "单扫描 rawavg 的原生复制被误说成缺少多扫描平均"
+  ]
+}

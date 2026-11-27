@@ -1,0 +1,30 @@
+{
+  "id": "PREPROC.RESAMPLING",
+  "scope": "structural_mri.preprocessing",
+  "category": "geometry",
+  "severity": "error",
+  "name": "重采样网格和插值符合声明",
+  "check": "核对输出维度、体素尺寸、仿射和空间名称是否与目标网格一致，并检查插值方式没有给标签或强度影像带来不应有的偏差。",
+  "metric_options": [
+    "shape",
+    "voxel_size_mm",
+    "affine_difference",
+    "grid_overlap",
+    "interpolation_method",
+    "edge_shift_mm"
+  ],
+  "evidence": [
+    "input and output headers",
+    "resampling parameters",
+    "grid overlay",
+    "difference or edge report"
+  ],
+  "pass_condition": "输出网格与声明一致，覆盖范围没有意外改变；连续强度使用合适插值，离散标签没有被线性插值污染。",
+  "unknown_condition": "未记录目标网格或插值方法，无法判断变化是否为预期。",
+  "fail_action": "block_downstream",
+  "common_failure_modes": [
+    "标签出现非整数值",
+    "仿射更新错误导致空间偏移",
+    "重采样后脑缘缩进或扩大"
+  ]
+}

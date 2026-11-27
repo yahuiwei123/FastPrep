@@ -1,0 +1,16 @@
+#!/bin/bash
+set -eu
+here=$(cd "$(dirname "$0")" && pwd)
+config=one-gpu-tuned.config
+if [[ ${1:-} == run ]]; then
+    # task.cpus is part of the generated scientific command and its cache key.
+    marker=.nextflow/fastprep-six-thread-models
+    if [[ -s .nextflow/history && ! -e $marker ]]; then
+        config=one-gpu.config
+    elif [[ ! -e $marker ]]; then
+        mkdir -p .nextflow
+        touch "$marker"
+    fi
+    printf 'FastPrep GPU scheduling profile: %s\n' "$config" >&2
+fi
+exec "${FASTPREP_NEXTFLOW:-nextflow}" -c "$here/$config" "$@"

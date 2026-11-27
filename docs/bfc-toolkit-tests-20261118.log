@@ -1,0 +1,76 @@
+test_deep_label_zero_is_corrected_without_clipping_or_restoring_input (test_bfc_support.GaussianTests.test_deep_label_zero_is_corrected_without_clipping_or_restoring_input) ... ok
+test_donors_are_actual_nearest_supported_voxels_not_reflected_indices (test_bfc_support.GaussianTests.test_donors_are_actual_nearest_supported_voxels_not_reflected_indices) ... ok
+test_erosion_uses_physical_spacing_and_excludes_nonpositive_samples (test_bfc_support.GaussianTests.test_erosion_uses_physical_spacing_and_excludes_nonpositive_samples) ... ok
+test_excluded_intensity_changes_cannot_drive_the_fit (test_bfc_support.GaussianTests.test_excluded_intensity_changes_cannot_drive_the_fit) ... Reliable-core Gaussian iteration 1/3; sigma=(3.0, 3.0, 3.0)
+Reliable-core Gaussian iteration 2/3; sigma=(2.620741394208897, 2.620741394208897, 2.620741394208897)
+Reliable-core Gaussian iteration 3/3; sigma=(2.2894284851066637, 2.2894284851066637, 2.2894284851066637)
+Reliable-core Gaussian iteration 1/3; sigma=(3.0, 3.0, 3.0)
+Reliable-core Gaussian iteration 2/3; sigma=(2.620741394208897, 2.620741394208897, 2.620741394208897)
+Reliable-core Gaussian iteration 3/3; sigma=(2.2894284851066637, 2.2894284851066637, 2.2894284851066637)
+ok
+test_field_validation_uses_application_brain_not_fit_domain_or_entire_box (test_bfc_support.GaussianTests.test_field_validation_uses_application_brain_not_fit_domain_or_entire_box) ... ok
+test_invalid_inputs_fail_without_support_fallback (test_bfc_support.GaussianTests.test_invalid_inputs_fail_without_support_fallback) ... ok
+test_low_intensity_mislabeled_wm_core_is_not_a_field_donor (test_bfc_support.GaussianTests.test_low_intensity_mislabeled_wm_core_is_not_a_field_donor) ... ok
+test_soft_weights_never_leak_into_unmodeled_or_other_tissue (test_bfc_support.GaussianTests.test_soft_weights_never_leak_into_unmodeled_or_other_tissue) ... ok
+test_support_is_class_specific_and_cannot_close_over_csf_or_unknown (test_bfc_support.GaussianTests.test_support_is_class_specific_and_cannot_close_over_csf_or_unknown) ... ok
+test_uniform_tissues_produce_identity_not_nan (test_bfc_support.GaussianTests.test_uniform_tissues_produce_identity_not_nan) ... Reliable-core Gaussian iteration 1/3; sigma=(3.0, 3.0, 3.0)
+Reliable-core Gaussian iteration 2/3; sigma=(2.620741394208897, 2.620741394208897, 2.620741394208897)
+Reliable-core Gaussian iteration 3/3; sigma=(2.2894284851066637, 2.2894284851066637, 2.2894284851066637)
+ok
+test_constant_control_values_remain_constant_far_outside_fit_support (test_bfc_support.RbfKernelTests.test_constant_control_values_remain_constant_far_outside_fit_support) ... ok
+test_interpolation_is_bounded_and_gradients_remain_finite (test_bfc_support.RbfKernelTests.test_interpolation_is_bounded_and_gradients_remain_finite) ... ok
+test_deep_label_zero_is_corrected_without_clipping_or_restoring_input (test_bfc_support.SupportTests.test_deep_label_zero_is_corrected_without_clipping_or_restoring_input) ... ok
+test_donors_are_actual_nearest_supported_voxels_not_reflected_indices (test_bfc_support.SupportTests.test_donors_are_actual_nearest_supported_voxels_not_reflected_indices) ... ok
+test_erosion_uses_physical_spacing_and_excludes_nonpositive_samples (test_bfc_support.SupportTests.test_erosion_uses_physical_spacing_and_excludes_nonpositive_samples) ... ok
+test_field_validation_uses_application_brain_not_fit_domain_or_entire_box (test_bfc_support.SupportTests.test_field_validation_uses_application_brain_not_fit_domain_or_entire_box) ... ok
+test_invalid_inputs_fail_without_support_fallback (test_bfc_support.SupportTests.test_invalid_inputs_fail_without_support_fallback) ... ok
+test_low_intensity_mislabeled_wm_core_is_not_a_field_donor (test_bfc_support.SupportTests.test_low_intensity_mislabeled_wm_core_is_not_a_field_donor) ... ok
+test_soft_weights_never_leak_into_unmodeled_or_other_tissue (test_bfc_support.SupportTests.test_soft_weights_never_leak_into_unmodeled_or_other_tissue) ... ok
+test_support_is_class_specific_and_cannot_close_over_csf_or_unknown (test_bfc_support.SupportTests.test_support_is_class_specific_and_cannot_close_over_csf_or_unknown) ... ok
+test_default_cli_is_rbf_and_fails_before_creating_outputs_without_gpu (test_bfc_toolkit.DeviceTests.test_default_cli_is_rbf_and_fails_before_creating_outputs_without_gpu) ... ok
+test_explicit_gpu_selection_and_unavailable_device_never_fall_back (test_bfc_toolkit.DeviceTests.test_explicit_gpu_selection_and_unavailable_device_never_fall_back) ... ok
+test_extracted_package_runs_without_fastprep_runtime_or_external_source_path (test_bfc_toolkit.StandaloneTests.test_extracted_package_runs_without_fastprep_runtime_or_external_source_path) ... ok
+test_standalone_archive_is_small_complete_and_refuses_overwrite (test_bfc_toolkit.ToolkitContractTests.test_standalone_archive_is_small_complete_and_refuses_overwrite) ... ok
+test_t1_t2_defaults_and_explicit_gaussian_selection (test_bfc_toolkit.ToolkitContractTests.test_t1_t2_defaults_and_explicit_gaussian_selection) ... ok
+test_explicit_t2_cannot_cross_session_or_be_used_when_disabled (test_inputs_and_bias.BidsInputSelectionTests.test_explicit_t2_cannot_cross_session_or_be_used_when_disabled) ... ok
+test_filters_multiple_sessions_and_selects_requested_t1_t2 (test_inputs_and_bias.BidsInputSelectionTests.test_filters_multiple_sessions_and_selects_requested_t1_t2) ... ok
+test_unselected_multiple_t1_and_t2_are_rejected (test_inputs_and_bias.BidsInputSelectionTests.test_unselected_multiple_t1_and_t2_are_rejected) ... ok
+test_rbf_cuda_t1_t2_and_divisor_to_pipeline_multiplier (test_inputs_and_bias.TissueBiasIntegrationTests.test_rbf_cuda_t1_t2_and_divisor_to_pipeline_multiplier) ... ok
+test_t1_and_t2_bias_reduction_geometry_wm_scale_and_label_preservation (test_inputs_and_bias.TissueBiasIntegrationTests.test_t1_and_t2_bias_reduction_geometry_wm_scale_and_label_preservation) ... ok
+test_bundled_command_files_exist_and_resource_names_are_unique (test_model_bundle.ModelBundleContractTests.test_bundled_command_files_exist_and_resource_names_are_unique) ... ok
+test_command_schema_and_local_paths (test_model_bundle.ModelBundleContractTests.test_command_schema_and_local_paths) ... ok
+test_copied_runtime_wrappers_have_no_content_digest_logic (test_model_bundle.ModelBundleContractTests.test_copied_runtime_wrappers_have_no_content_digest_logic) ... ok
+test_expected_model_operations_and_specific_assets (test_model_bundle.ModelBundleContractTests.test_expected_model_operations_and_specific_assets) ... ok
+test_profiles_and_environment_recipes_are_present (test_model_bundle.ModelBundleContractTests.test_profiles_and_environment_recipes_are_present) ... ok
+test_synthseg_initializers_only_import_packaged_modules (test_model_bundle.ModelBundleContractTests.test_synthseg_initializers_only_import_packaged_modules) ... ok
+test_synthseg_recipe_does_not_disable_requested_gpu (test_model_bundle.ModelBundleContractTests.test_synthseg_recipe_does_not_disable_requested_gpu) ... ok
+test_final_surface_morphometry_commands (test_native_interfaces.FreeSurferInterfaceTests.test_final_surface_morphometry_commands) ... skipped 'Set FASTPREP_TEST_FREESURFER to exercise installed FreeSurfer binaries'
+test_artifact_cannot_escape_result (test_pipeline_contract.PipelineContractTests.test_artifact_cannot_escape_result) ... ok
+test_assembly_keeps_collection_paths_and_empty_command_logs (test_pipeline_contract.PipelineContractTests.test_assembly_keeps_collection_paths_and_empty_command_logs) ... ok
+test_empty_source_allowed_but_empty_weights_rejected (test_pipeline_contract.PipelineContractTests.test_empty_source_allowed_but_empty_weights_rejected) ... ok
+test_final_t2_pial_drives_morphometry (test_pipeline_contract.PipelineContractTests.test_final_t2_pial_drives_morphometry) ... ok
+test_graph_ports_and_reject_missing_edge (test_pipeline_contract.PipelineContractTests.test_graph_ports_and_reject_missing_edge) ... ok
+test_missing_script_interpreter_has_actionable_error (test_pipeline_contract.PipelineContractTests.test_missing_script_interpreter_has_actionable_error) ... ok
+test_real_renderers_and_full_cortical_pair (test_qc_integration.QCIntegrationTests.test_real_renderers_and_full_cortical_pair) ... skipped 'Set FASTPREP_TEST_QC_PYTHON and FASTPREP_TEST_GEOMETRY_PYTHON'
+test_collector_html_links_resolve_from_index_location (test_qc_runtime.StandaloneQCTests.test_collector_html_links_resolve_from_index_location) ... ok
+test_forwarding_preserves_collection_record_and_copies_qc_logs (test_qc_runtime.StandaloneQCTests.test_forwarding_preserves_collection_record_and_copies_qc_logs) ... ok
+test_manifest_with_members_resolves_to_primary_record (test_qc_runtime.StandaloneQCTests.test_manifest_with_members_resolves_to_primary_record) ... ok
+test_report_only_forwards_provisionally_and_strict_blocks_unknown (test_qc_runtime.StandaloneQCTests.test_report_only_forwards_provisionally_and_strict_blocks_unknown) ... ok
+test_stage_catalog_accepts_portable_manifest_without_hash_fields (test_qc_runtime.StandaloneQCTests.test_stage_catalog_accepts_portable_manifest_without_hash_fields) ... ok
+test_structural_input_pass_never_means_visual_approval (test_qc_runtime.StandaloneQCTests.test_structural_input_pass_never_means_visual_approval) ... ok
+test_cpu_convolution_is_rejected_for_gpu_request (test_synthseg_device.SynthSegDeviceTests.test_cpu_convolution_is_rejected_for_gpu_request) ... ok
+test_cpu_explicitly_hides_gpus (test_synthseg_device.SynthSegDeviceTests.test_cpu_explicitly_hides_gpus) ... ok
+test_cuda_preserves_outer_visibility_and_verifies_convolution (test_synthseg_device.SynthSegDeviceTests.test_cuda_preserves_outer_visibility_and_verifies_convolution) ... SynthSeg GPU execution verified: {"requested_device": "cuda", "device": "cuda:0", "tensorflow_version": "test", "cuda_visible_devices": "GPU-selected", "tensorflow_device": "/device:GPU:0", "gpu_name": "test GPU"}
+ok
+test_explicit_gpu_never_falls_back_when_unavailable (test_synthseg_device.SynthSegDeviceTests.test_explicit_gpu_never_falls_back_when_unavailable) ... ok
+test_invalid_device_and_thread_count_are_rejected (test_synthseg_device.SynthSegDeviceTests.test_invalid_device_and_thread_count_are_rejected) ... ok
+test_out_of_range_gpu_is_rejected (test_synthseg_device.SynthSegDeviceTests.test_out_of_range_gpu_is_rejected) ... ok
+test_sequential_flip_preserves_spatial_axis_channels_and_average (test_synthseg_device.SynthSegDeviceTests.test_sequential_flip_preserves_spatial_axis_channels_and_average) ... ok
+test_sequential_flip_rejects_mismatched_channels (test_synthseg_device.SynthSegDeviceTests.test_sequential_flip_rejects_mismatched_channels) ... ok
+test_visible_gpu_index_is_respected (test_synthseg_device.SynthSegDeviceTests.test_visible_gpu_index_is_respected) ... SynthSeg GPU execution verified: {"requested_device": "cuda:1", "device": "cuda:1", "tensorflow_version": "test", "cuda_visible_devices": null, "tensorflow_device": "/device:GPU:0", "gpu_name": "test GPU"}
+ok
+
+----------------------------------------------------------------------
+Ran 60 tests in 75.878s
+
+OK (skipped=2)

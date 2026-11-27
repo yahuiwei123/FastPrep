@@ -1,0 +1,39 @@
+{
+  "id": "SURFACE.WHITE_PIAL",
+  "scope": "cortical_reconstruction",
+  "category": "combined",
+  "severity": "error",
+  "name": "white 和 pial 表面对应正确",
+  "check": "检查 white/pial 顶点对应、内外顺序、厚度分布、负厚度和 ribbon 覆盖；确认两张表面属于同一半球和同一空间。 在原图上叠加 white/pial 轮廓，检查灰白质边界和灰质—脑脊液边界，定位表面穿出、脑沟桥接、交叉及 ribbon 缺失。",
+  "metric_options": [
+    "negative_thickness_vertices",
+    "thickness_percentiles",
+    "vertex_correspondence",
+    "white_inside_pial_fraction",
+    "ribbon_coverage"
+  ],
+  "evidence": [
+    "surface metadata",
+    "thickness report",
+    "white-pial overlay"
+  ],
+  "pass_condition": "顶点对应成立，white 位于 pial 内侧，厚度为正且在协议范围；异常点有空间定位和解释。 原图叠加中的 white/pial 贴合相应边界，没有无法解释的穿出、桥接或覆盖缺失。",
+  "unknown_condition": "缺少表面对应关系、空间信息、必需几何指标或原图叠加证据，且没有已证实的失败。",
+  "fail_action": "block_downstream",
+  "common_failure_modes": [
+    "white/pial 交叉",
+    "左右半球错配",
+    "局部厚度异常被平均值掩盖"
+  ],
+  "required_layout": {
+    "slice_count": 20,
+    "rows": 4,
+    "columns": 5,
+    "selection": "代表皮层且包含表面的层",
+    "contour_colors": {
+      "white": "#ff3030",
+      "pial": "#3080ff"
+    }
+  },
+  "visual_evidence_required": true
+}

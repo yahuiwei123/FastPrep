@@ -1,0 +1,8 @@
+name: fastprep-helper
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11.15
+  - pip
+  - pip:
+      - -r helper-requirements.txt

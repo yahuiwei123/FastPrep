@@ -1,0 +1,7 @@
+numpy==2.4.6
+scipy==1.17.1
+nibabel==5.4.2
+SimpleITK==2.5.5
+scikit-image==0.26.0
+torch==2.5.1
+nnunetv2==2.8.1

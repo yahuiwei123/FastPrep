@@ -1,0 +1,355 @@
+{
+  "build": "FreeSurfer 8.1.0 f30dfed Linux x86_64",
+  "artifacts": {
+    "topology/native/geometry.so": {
+      "GLIBC": "2.17",
+      "GLIBCXX": "3.4.21",
+      "CXXABI": "1.3",
+      "sass": [
+        50,
+        52,
+        53,
+        60,
+        61,
+        62,
+        70,
+        72,
+        75,
+        80,
+        86,
+        87,
+        89,
+        90,
+        100,
+        101,
+        120
+      ],
+      "ptx": [
+        50
+      ],
+      "focal_loader": "passed"
+    },
+    "topology/native/cuda13/geometry.so": {
+      "GLIBC": "2.17",
+      "GLIBCXX": "3.4.21",
+      "CXXABI": "1.3",
+      "sass": [
+        75,
+        80,
+        86,
+        87,
+        88,
+        89,
+        90,
+        100,
+        103,
+        110,
+        120,
+        121
+      ],
+      "ptx": [
+        75
+      ],
+      "focal_loader": "passed"
+    },
+    "t2_pial/native/classify.so": {
+      "GLIBC": "2.17",
+      "sass": [
+        50,
+        52,
+        53,
+        60,
+        61,
+        62,
+        70,
+        72,
+        75,
+        80,
+        86,
+        87,
+        89,
+        90,
+        100,
+        101,
+        120
+      ],
+      "ptx": [
+        50
+      ],
+      "focal_loader": "passed"
+    },
+    "t2_pial/native/cuda13/classify.so": {
+      "GLIBC": "2.17",
+      "CXXABI": "1.3",
+      "sass": [
+        75,
+        80,
+        86,
+        87,
+        88,
+        89,
+        90,
+        100,
+        103,
+        110,
+        120,
+        121
+      ],
+      "ptx": [
+        75
+      ],
+      "focal_loader": "passed"
+    },
+    "t2_pial/native/pial-field.so": {
+      "GLIBC": "2.17",
+      "GLIBCXX": "3.4.21",
+      "CXXABI": "1.3.9",
+      "sass": [
+        50,
+        52,
+        53,
+        60,
+        61,
+        62,
+        70,
+        72,
+        75,
+        80,
+        86,
+        87,
+        89,
+        90,
+        100,
+        101,
+        120
+      ],
+      "ptx": [
+        50
+      ],
+      "focal_loader": "passed"
+    },
+    "t2_pial/native/cuda13/pial-field.so": {
+      "GLIBC": "2.17",
+      "GLIBCXX": "3.4.21",
+      "CXXABI": "1.3.9",
+      "sass": [
+        75,
+        80,
+        86,
+        87,
+        88,
+        89,
+        90,
+        100,
+        103,
+        110,
+        120,
+        121
+      ],
+      "ptx": [
+        75
+      ],
+      "focal_loader": "passed"
+    },
+    "t2_pial/t1/native/signed.so": {
+      "GLIBC": "2.17",
+      "GLIBCXX": "3.4.21",
+      "CXXABI": "1.3",
+      "sass": [
+        50,
+        52,
+        53,
+        60,
+        61,
+        62,
+        70,
+        72,
+        75,
+        80,
+        86,
+        87,
+        89,
+        90,
+        100,
+        101,
+        120
+      ],
+      "ptx": [
+        50
+      ],
+      "focal_loader": "passed"
+    },
+    "t2_pial/t1/native/cuda13/signed.so": {
+      "GLIBC": "2.17",
+      "GLIBCXX": "3.4.21",
+      "CXXABI": "1.3",
+      "sass": [
+        75,
+        80,
+        86,
+        87,
+        88,
+        89,
+        90,
+        100,
+        103,
+        110,
+        120,
+        121
+      ],
+      "ptx": [
+        75
+      ],
+      "focal_loader": "passed"
+    },
+    "topology/native/qsphere": {
+      "GLIBC": "2.29",
+      "GLIBCXX": "3.4.26",
+      "CXXABI": "1.3",
+      "focal_loader": "passed"
+    },
+    "t2_pial/native/place": {
+      "GLIBC": "2.29",
+      "GLIBCXX": "3.4.26",
+      "CXXABI": "1.3.11",
+      "focal_loader": "passed"
+    },
+    "t2_pial/native/distance-field": {
+      "GLIBC": "2.29",
+      "GLIBCXX": "3.4.21",
+      "CXXABI": "1.3",
+      "focal_loader": "passed"
+    },
+    "t2_pial/t1/native/place": {
+      "GLIBC": "2.29",
+      "GLIBCXX": "3.4.26",
+      "CXXABI": "1.3.9",
+      "focal_loader": "passed"
+    },
+    "pytorch3d/_C": {
+      "GLIBC": "2.27",
+      "GLIBCXX": "3.4.22",
+      "CXXABI": "1.3.11",
+      "sass": [
+        70,
+        72,
+        75,
+        80,
+        86,
+        87,
+        89,
+        90,
+        100,
+        101,
+        120
+      ],
+      "ptx": [
+        70
+      ]
+    }
+  },
+  "host_audit": {
+    "target_reference": "GLIBC <= 2.35, GLIBCXX <= 3.4.30 (Ubuntu 22.04); 12 surface ELF additionally checked with Ubuntu 20.04 baseline loader",
+    "scope": "46 configured command identities, native pilot command journals, project binaries/libraries, and shared project/environment ELF files mapped in eight scientific Python import profiles. Excludes OS/driver packages and unexercised lazy imports.",
+    "before_elf_count": 1379,
+    "after_elf_count": 1379,
+    "prior_exceeded_reference": [
+      "vendor/t2_pial/native/distance-field",
+      "vendor/t2_pial/native/place",
+      "vendor/t2_pial/t1/native/place",
+      "vendor/topology/native/qsphere"
+    ],
+    "still_exceed_reference": [],
+    "inventory": "Retained in the local deployment log"
+  },
+  "tests": {
+    "physical_gpu": "NVIDIA A100-SXM4-40GB",
+    "driver": "535.161.08",
+    "topology_replay": {
+      "stage": "ANAT_FIX_TOPOLOGY",
+      "command_exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "hemispheres": {
+        "lh": {
+          "quick_sphere": {
+            "backend": "gpu",
+            "ga_backend": "cpu",
+            "geometry_passes": 841,
+            "mesh_binds": 1,
+            "native_normal_retries": 0,
+            "cuda_visible_device": "0",
+            "fs_stamp": "freesurfer-linux-ubuntu20_x86_64-8.1.0-20250718-f30dfed",
+            "seconds": 62.32912128395401
+          },
+          "final_cleanup": {
+            "euler_number": 2,
+            "total_defect_index": 0,
+            "self_intersecting_vertices": 0
+          }
+        },
+        "rh": {
+          "quick_sphere": {
+            "backend": "gpu",
+            "ga_backend": "cpu",
+            "geometry_passes": 740,
+            "mesh_binds": 1,
+            "native_normal_retries": 0,
+            "cuda_visible_device": "0",
+            "fs_stamp": "freesurfer-linux-ubuntu20_x86_64-8.1.0-20250718-f30dfed",
+            "seconds": 61.60089392098598
+          },
+          "final_cleanup": {
+            "euler_number": 2,
+            "total_defect_index": 0,
+            "self_intersecting_vertices": 0
+          }
+        }
+      }
+    },
+    "focal_loader_A100_quick_sphere_left": "123588 247220 {'geometry_passes': 841, 'mesh_binds': 1, 'native_normal_retries': 0}",
+    "white_surface_replay": {
+      "stage": "ANAT_WHITE_SURFACE",
+      "cuda_backends": {
+        "lh": "cuda-ordered-signed",
+        "rh": "cuda-ordered-signed"
+      },
+      "exact_vertex_coordinates_and_faces_against_original": true,
+      "surfaces": [
+        "lh.white",
+        "rh.white",
+        "lh.white.preaparc",
+        "rh.white.preaparc"
+      ]
+    },
+    "SUGAR_PyTorch3D": "A100 K=2 indices and squared distances correct through production bin/sugar",
+    "distance_and_pial_field": "distance outputs 2197 0.0\nT2 driver 0 mris_place_surface freesurfer 8.1.0\npial CUDA field OK"
+  },
+  "limits": [
+    "Physical GPU tests on A100 only",
+    "CUDA 13 images verified statically. Current driver uses CUDA 12 images.",
+    "Whole-pipeline compatibility depends on the external PyTorch/TensorFlow/CUDA stack and available memory. Macabrain PyTorch 2.5.1+cu121 advertises through sm_90. SUGAR PyTorch 2.8.0+cu128 starts at sm_70.",
+    "Full T2-guided pial stage not replayed; distance field and kernel exercised."
+  ]
+}

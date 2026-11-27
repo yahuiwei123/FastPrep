@@ -1,0 +1,30 @@
+{
+  "id": "SEG.REFERENCE",
+  "scope": "segmentation",
+  "category": "metric",
+  "severity": "info",
+  "availability": "requires_ground_truth",
+  "name": "有参考标注时才计算参考指标",
+  "check": "有独立参考标注时计算标签重叠、边界距离、体积和分类错误；没有参考标注时明确记为 unknown，不伪造 Dice 等结果。",
+  "metric_options": [
+    "dice",
+    "iou",
+    "sensitivity",
+    "specificity",
+    "hd95",
+    "assd",
+    "relative_volume_error"
+  ],
+  "evidence": [
+    "ground-truth provenance",
+    "reference metric report"
+  ],
+  "pass_condition": "每个必需类别达到协议阈值，参考标注与预测标签空间一致。",
+  "unknown_condition": "没有独立、可追溯且空间一致的 ground truth。",
+  "fail_action": "require_review",
+  "common_failure_modes": [
+    "把模型训练标签当独立测试标签",
+    "参考标签和预测标签 affine 不同",
+    "只报告平均 Dice 而隐藏失败类别"
+  ]
+}

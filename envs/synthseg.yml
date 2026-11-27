@@ -1,0 +1,8 @@
+name: fastprep-synthseg
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9.25
+  - pip
+  - pip:
+      - -r synthseg-requirements.txt

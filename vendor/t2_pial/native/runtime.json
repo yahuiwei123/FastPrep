@@ -1,0 +1,1 @@
+{"schema": "fastprep.t2-pial/2", "stamp": "freesurfer-linux-ubuntu20_x86_64-8.1.0-20250718-f30dfed", "arch": 50, "binding": "fsbindings.cpython-38-x86_64-linux-gnu.so", "collision_predicate": "symmetric-native-triangle-v1", "ptx": true, "sass": [50, 52, 53, 60, 61, 62, 70, 72, 75, 80, 86, 87, 89, 90, 100, 101, 120]}

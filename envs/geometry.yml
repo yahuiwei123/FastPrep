@@ -1,0 +1,13 @@
+name: fastprep-geometry
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy=1.26.4
+  - scipy=1.15.3
+  - nibabel=5.2.1
+  - trimesh=4.12.2
+  - rtree=1.4.1
+  - pip
+  - pip:
+      - python-fcl==0.7.0.11

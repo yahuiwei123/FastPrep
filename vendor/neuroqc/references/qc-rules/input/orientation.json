@@ -1,0 +1,26 @@
+{
+  "id": "INPUT.ORIENTATION",
+  "scope": "structural_mri.input",
+  "category": "geometry",
+  "severity": "error",
+  "name": "解剖方向与实际标注一致",
+  "check": "核对 NIfTI 仿射、轴向标记、左右方向和 canonical 化前后的对应关系；确认重定向没有引入镜像或轴交换。",
+  "metric_options": [
+    "affine_orientation",
+    "determinant_sign",
+    "qform_sform_difference",
+    "left_right_landmark_check"
+  ],
+  "evidence": [
+    "original and canonical headers",
+    "orientation report",
+    "landmark or asymmetric-structure overlay"
+  ],
+  "pass_condition": "方向标签与仿射一致，行列式符号和左右解剖结构符合协议，重定向只改变存储顺序而不改变解剖位置。",
+  "unknown_condition": "没有方向元数据或没有可识别的左右参照，无法排除镜像。",
+  "fail_action": "reject_qc",
+  "common_failure_modes": [
+    "仿射更新但 qform/sform 未同步",
+    "显示方向与计算使用方向不一致"
+  ]
+}
